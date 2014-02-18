@@ -36,8 +36,9 @@ class Cobiss
 	public $libraryIds = [ // Keys mustn't be numeric (is_numeric) !
 		'Ptuj' => '50360',
 		'Ormoz' => '50395',
+		'Kranj' => '50250',
 		'FMF' => '50028',
-		'CTK' => '',
+		'CTK' => '50002',
 		'NUK' => '',
 	];
 
