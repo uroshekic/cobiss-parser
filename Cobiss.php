@@ -53,7 +53,6 @@ class Cobiss
 		$this->libraryId = $libraryId === null ? $this->libraryIds['FMF'] : (is_numeric($libraryId) ? $libraryId : $this->libraryIds[$libraryId]);
 
 		// Select a random user agent
-		// Fajn bi bilo, če user agenta pošljemo še kje drugje kot v tej funkciji
 		$rand = mt_rand(0, count($this->userAgents) - 1);
 		$this->userAgent = $this->userAgents[$rand];
 
