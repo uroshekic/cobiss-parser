@@ -231,7 +231,7 @@ EOT;
 	 */
 	public static function parseISBN($subject)
 	{
-		$isbnP = '|rft\.isbn=([0-9\-]*)&|';
+		$isbnP = '|rft\.isbn=([0-9x\-]*)&|i';
 		$isbnMatches = [];
 		preg_match_all($isbnP, $subject, $isbnMatches);
 		if (count($isbnMatches[1]) > 0) {
