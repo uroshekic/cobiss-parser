@@ -12,11 +12,11 @@ COBISS parser written in PHP
 Check index.php and example.php
 ```php
 include 'Cobiss.php';
-$c = new Cobiss('Ptuj');
-$r = $c->search('86-11-16301-X');
+$c = new Cobiss('CTK');
+$r = $c->search('978-0-13-274718-9');
 $r = Cobiss::parse($r);
 if (count($r) > 0) {
-    var_dump($r);
+	var_dump($r);
 } else {
 	print('Not found.');
 }
