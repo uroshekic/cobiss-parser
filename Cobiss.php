@@ -32,6 +32,7 @@ class Cobiss
 		'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:26.0) Gecko/20100101 Firefox/26.0',
 		'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)', // WATCH OUT WE GOT A BADASS OVER HERE!
 		'Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)',
+		'Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405'
 	];
 	public $libraryIds = [ // Keys mustn't be numeric (is_numeric) !
 		'Ptuj' => '50360',
@@ -87,14 +88,14 @@ EOT;
 	{
 		// Visit to the library page
 		$uri = 'http://cobiss' . $this->server_digit . '.izum.si/scripts/cobiss?ukaz=BASE&bno=' . $this->libraryId . '&id=' . $this->session_id;
-		$request = \Httpful\Request::get($uri)->addHeader('Set-Cookie', $this->cookie);
+		$request = \Httpful\Request::get($uri)->addHeader('User-agent:', $this->userAgent)->addHeader('Set-Cookie', $this->cookie);
 		$response = $request->send();
 		//var_dump($response);
 		//print($response->raw_body);
 
 		// Select 'Osnovno iskanje' tab
 		$uri = 'http://cobiss' . $this->server_digit . '.izum.si/scripts/cobiss?ukaz=SFRM&mode=7&id=' . $this->session_id;
-		$response = \Httpful\Request::get($uri)->addHeader('Set-Cookie', $this->cookie)->send();
+		$response = \Httpful\Request::get($uri)->addHeader('User-agent:', $this->userAgent)->addHeader('Set-Cookie', $this->cookie)->send();
 
 		$this->prepared = true;
 	}
@@ -119,7 +120,7 @@ EOT;
 			'find' => 'isci'
 		];
 		$data = http_build_query($data);
-		$request = \Httpful\Request::post($uri, $data)->addHeader('Set-Cookie', $this->cookie);
+		$request = \Httpful\Request::post($uri, $data)->addHeader('User-agent:', $this->userAgent)->addHeader('Set-Cookie', $this->cookie);
 		$response = $request->send();
 		//var_dump($response);
 		//var_dump($response->headers);
