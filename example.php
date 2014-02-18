@@ -23,11 +23,12 @@ $query = $_GET['q'];
 // /*
 $c = new Cobiss('Ptuj');
 $response = $c->search($query);
-/* Test cases:
+/* Example queries:
  *		"Gospodar prstanov Bratovščina prstana"
  * 		"Pika Nogavička"
  *		"Harry Potter"
  *		"Wikileaks od znotraj" (exact match)
+ *		"86-11-16301-X"
  */
 
 //echo json_encode($results, JSON_UNESCAPED_UNICODE);
